@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<appender name="Archivo" class="org.apache.log4j.RollingFileAppender"><!-- todo esto lo imprime en el archivo -->
+    	<param name="MaxFileSize" value="5000KB"/>
+	    <param name="maxBackupIndex" value="5"/>
+		<param name="File"   value="/usr/local/apache-tomcat/apache-tomcat-7.0.62/logs/DamoticServer.log" />
+		<param name="threshold" value="info"/><!-- a partir de aqui comienza a imprimir -->
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%t %-5p %c{2} - %m%n"/>
+		</layout>
+    </appender>
+
+    <appender name="Consola" class="org.apache.log4j.ConsoleAppender"><!-- todo esto lo imprime en consola -->
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %-5p [%t] %C{2} (%F:%L) - %m%n"/>
+        </layout>
+    </appender>
+
+    <root>
+       <priority value ="debug"/>
+       <appender-ref ref="Consola"/>
+       <appender-ref ref="Archivo"/>
+    </root>
+</log4j:configuration>
